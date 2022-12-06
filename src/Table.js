@@ -20,7 +20,9 @@ const Table = () => {
       .catch(error => console.log(error));
   }, []);
 
-  
+         const handleChange = e => {
+          setSearch(e.target.value);
+        };
 
         const filteredCoins = coins.filter(coin =>
             coin.name.toLowerCase().includes(search.toLowerCase())
@@ -31,6 +33,17 @@ const Table = () => {
     return (
         <table>
         <div className='coin-app-row'>
+        <div className='coin-search'>
+        <h1 className='coin-text'>Search a currency</h1>
+        <form>
+          <input
+            className='coin-input'
+            type='text'
+            onChange={handleChange}
+            placeholder='Search'
+          />
+        </form>
+      </div>
      
       {filteredCoins.map(coin => {
       
